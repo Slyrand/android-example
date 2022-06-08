@@ -1,15 +1,18 @@
 package com.slyrand.data.character.network
 
-import arrow.core.Either
+import com.slyrand.data.character.CharacterRepository
 import com.slyrand.data.core.network.NetworkDataSource
-import com.slyrand.domain.core.model.DataException
 import com.slyrand.domain.character.model.Character
+import com.slyrand.domain.core.DataResult
 
 class CharacterNetworkDatasource(
     private val characterService: CharacterService
-): NetworkDataSource() {
+) : CharacterRepository.INetworkDatasource, NetworkDataSource() {
 
-    fun getCharacters(): Either<DataException, List<Character>> = handleCall {
-        characterService.getCharacters()
-    }.map { result -> result.data.results.map { it.mapToDomain() } }
+    override suspend fun getCharacters(): DataResult<List<Character>> = handleCall {
+        characterService
+            .getCharacters().data.results
+            .map { it.mapToDomain() }
+    }
+
 }
