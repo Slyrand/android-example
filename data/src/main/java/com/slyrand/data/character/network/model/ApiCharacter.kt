@@ -16,7 +16,7 @@ data class ApiCharacter(
     val series: List<String>,
 ) {
 
-    fun mapToDomain(): Character = Character(
+    fun asCharacter(): Character = Character(
         id = id,
         name = name,
         description = description,

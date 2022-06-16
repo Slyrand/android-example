@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/compose-model-1654671627260.xml" value="0.5" />
+        <entry key="mvvmapp/src/main/res/layout/activity_main.xml" value="0.165625" />
+        <entry key="mvvmapp/src/main/res/layout/fragment_character_list.xml" value="0.3203125" />
+        <entry key="mvvmapp/src/main/res/layout/item_character.xml" value="0.3203125" />
       </map>
     </option>
   </component>

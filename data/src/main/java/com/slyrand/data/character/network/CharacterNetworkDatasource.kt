@@ -12,7 +12,7 @@ class CharacterNetworkDatasource(
     override suspend fun getCharacters(): DataResult<List<Character>> = handleCall {
         characterService
             .getCharacters().data.results
-            .map { it.mapToDomain() }
+            .map { it.asCharacter() }
     }
 
 }
