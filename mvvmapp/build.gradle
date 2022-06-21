@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id "androidx.navigation.safeargs"
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
@@ -50,12 +50,15 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
+
+    // NAVIGATION
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
 
     // KOIN
     implementation "io.insert-koin:koin-android:3.2.0"
     implementation "io.insert-koin:koin-android-compat:3.2.0"
+    implementation "io.insert-koin:koin-androidx-navigation:3.2.0"
 
     // GLIDE
     implementation "com.github.bumptech.glide:glide:4.12.0"

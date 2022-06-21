@@ -5,11 +5,16 @@
       <map>
         <entry key="../../../../../layout/compose-model-1654671627260.xml" value="0.5" />
         <entry key="mvvmapp/src/main/res/drawable/bg_cutted_corner.xml" value="0.304" />
+        <entry key="mvvmapp/src/main/res/drawable/ic_cake.xml" value="0.1045" />
+        <entry key="mvvmapp/src/main/res/drawable/ic_cellphone.xml" value="0.1045" />
+        <entry key="mvvmapp/src/main/res/drawable/ic_email.xml" value="0.1045" />
         <entry key="mvvmapp/src/main/res/layout/activity_main.xml" value="0.165625" />
         <entry key="mvvmapp/src/main/res/layout/fragment_character_detail.xml" value="0.4140625" />
         <entry key="mvvmapp/src/main/res/layout/fragment_character_list.xml" value="0.3203125" />
-        <entry key="mvvmapp/src/main/res/layout/fragment_user_detail.xml" value="0.3203125" />
+        <entry key="mvvmapp/src/main/res/layout/fragment_user_detail.xml" value="0.1" />
         <entry key="mvvmapp/src/main/res/layout/item_character.xml" value="0.3203125" />
+        <entry key="mvvmapp/src/main/res/layout/item_profile_attr.xml" value="0.3203125" />
+        <entry key="mvvmapp/src/main/res/layout/item_user.xml" value="0.10572916666666667" />
       </map>
     </option>
   </component>

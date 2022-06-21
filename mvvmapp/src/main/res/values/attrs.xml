@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="UserItemView">
+        <attr name="optionIcon" format="reference"/>
+        <attr name="optionIconTint" format="reference"/>
+        <attr name="optionText" format="string"/>
+        <attr name="optionTextColor" format="reference"/>
+    </declare-styleable>
+</resources>

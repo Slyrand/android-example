@@ -8,7 +8,7 @@ class Navigator(
 ) {
 
     fun navigateToUserDetail(userId: String) {
-        /*val action = UserListFragmentDirections.actionUserListToUserDetail(userId)
-        navController.navigate(action)*/
+        val action = UserListFragmentDirections.actionUserListToUserDetail(userId)
+        navController.navigate(action)
     }
 }
