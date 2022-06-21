@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.slyrand.domain.character.ICharacterRepository
 import com.slyrand.domain.character.model.Character
+import com.slyrand.domain.core.model.DataError
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,8 +22,9 @@ class CharactersListViewModel(
     init {
         viewModelScope.launch {
             _state.value = state.value.copy(loading = true)
+            delay(2000)
             characterRepository.getCharacters().fold(
-                {},
+                { _state.value = state.value.copy(error = it) },
                 { _state.value = state.value.copy(characters = it) }
             )
             _state.value = state.value.copy(loading = false)
@@ -30,6 +33,7 @@ class CharactersListViewModel(
 
     data class UiState(
         val loading: Boolean = false,
+        val error: DataError? = null,
         val characters: List<Character> = emptyList(),
     )
 }

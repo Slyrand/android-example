@@ -6,5 +6,10 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val networkModule: Module = module {
-    single { ApiClient.createService(CharacterService::class.java) }
+    single {
+        ApiClient(
+            marvelApiPrivateKey,
+            marvelApiPublicKey
+        ).createService(CharacterService::class.java)
+    }
 }

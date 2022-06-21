@@ -7,29 +7,33 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class ApiClient {
+class ApiClient(
+    private val privateKey: String,
+    private val publicKey: String,
+) {
 
-    companion object {
-        fun <S> createService(serviceClass: Class<S>): S {
-            val httpClient = OkHttpClient.Builder()
-            val loggingInterceptor = HttpLoggingInterceptor()
-            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+    fun <S> createService(serviceClass: Class<S>): S {
+        val httpClient = OkHttpClient.Builder()
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-            with(httpClient) {
-                readTimeout(10, TimeUnit.SECONDS)
-                connectTimeout(10, TimeUnit.SECONDS)
-            }
-
-            val retrofit = getRetrofitClient(httpClient.build())
-            return retrofit.create(serviceClass)
+        with(httpClient) {
+            addInterceptor(QueryInterceptor(privateKey, publicKey))
+            readTimeout(10, TimeUnit.SECONDS)
+            connectTimeout(10, TimeUnit.SECONDS)
         }
 
-        private fun getRetrofitClient(okHttpClient: OkHttpClient): Retrofit {
-            return Retrofit.Builder()
-                .baseUrl("https://gateway.marvel.com:443")
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-                .client(okHttpClient)
-                .build()
-        }
+        val retrofit = getRetrofitClient(httpClient.build())
+        return retrofit.create(serviceClass)
+    }
+
+
+    private fun getRetrofitClient(okHttpClient: OkHttpClient): Retrofit {
+        val baseUrl = "https://gateway.marvel.com/"
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
     }
 }

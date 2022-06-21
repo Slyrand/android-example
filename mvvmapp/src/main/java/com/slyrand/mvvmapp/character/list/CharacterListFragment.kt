@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.slyrand.mvvmapp.R
 import com.slyrand.mvvmapp.databinding.FragmentCharacterListBinding
 import kotlinx.coroutines.flow.collect
@@ -23,6 +25,8 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
 
         _binding = FragmentCharacterListBinding.bind(view).apply {
             _adapter = CharacterAdapter { }
+            charactersList.adapter = _adapter
+            charactersList.layoutManager = GridLayoutManager(requireContext(), 3)
             viewLifecycleOwner.lifecycleScope.launch {
                 viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                     _viewModel.state.collect { state ->
@@ -32,6 +36,5 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                 }
             }
         }
-
     }
 }
