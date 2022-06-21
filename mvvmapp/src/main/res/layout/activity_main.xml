@@ -16,5 +16,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:navGraph="@navigation/character_navigation" />
+        app:navGraph="@navigation/user_navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

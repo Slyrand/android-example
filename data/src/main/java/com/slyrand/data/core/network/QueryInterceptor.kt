@@ -1,34 +1,17 @@
 package com.slyrand.data.core.network
 
-import com.slyrand.domain.core.generateHash
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.io.IOException
 
-class QueryInterceptor constructor(
-    private val privateKey: String,
-    private val publicKey: String,
-) : Interceptor {
+class QueryInterceptor : Interceptor {
 
+    @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
-        val originalRequest = chain.request()
-        val originalUrl = originalRequest.url
-        val requestBuilder = originalRequest.newBuilder()
-        val timestamp = System.currentTimeMillis()
+        val request = chain.request().newBuilder()
+            .addHeader("app-id", "6297395fabb9941ade3d5b49")
+            .build()
 
-        generateHash(timestamp, privateKey, publicKey).map {
-            val url = originalUrl.newBuilder()
-                .addQueryParameter("apikey", publicKey)
-                .addQueryParameter("ts", timestamp.toString())
-                .addQueryParameter("hash", it)
-                .build()
-
-            return chain.proceed(
-                requestBuilder
-                .url(url)
-                .build()
-            )
-        }
-
-        return chain.proceed(requestBuilder.build())
+        return chain.proceed(request)
     }
 }

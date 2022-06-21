@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@+id/user_list">
+
+    <fragment
+        android:id="@+id/user_list"
+        android:name="com.slyrand.mvvmapp.user.list.UserListFragment"
+        android:label="user_list"
+        tools:layout="@layout/fragment_user_list">
+        <action
+            android:id="@+id/action_user_list_to_user_detail"
+            app:destination="@id/user_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_detail"
+        android:name="com.slyrand.mvvmapp.user.detail.UserDetailFragment"
+        android:label="user_detail"
+        tools:layout="@layout/fragment_user_detail">
+        <argument
+            android:name="user_id"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

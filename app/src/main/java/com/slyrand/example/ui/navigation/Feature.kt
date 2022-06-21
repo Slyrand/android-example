@@ -2,10 +2,10 @@ package com.slyrand.example.ui.navigation
 
 sealed class Feature(val route: String) {
     companion object {
-        const val CHARACTERS = "characters"
-        const val CHARACTER_DETAIL = "character_detail"
+        const val USERS = "users"
+        const val USER_DETAIL = "user_detail"
     }
 
-    object CharacterList : Feature(CHARACTERS)
-    object CharactersDetail : Feature(CHARACTER_DETAIL)
+    object UserList : Feature(USERS)
+    object UserDetail : Feature(USER_DETAIL)
 }

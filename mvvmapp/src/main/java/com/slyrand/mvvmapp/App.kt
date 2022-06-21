@@ -5,7 +5,7 @@ import com.slyrand.data.BuildConfig
 import com.slyrand.data.di.datasourceModule
 import com.slyrand.data.di.networkModule
 import com.slyrand.data.di.repositoryModule
-import com.slyrand.mvvmapp.character.di.characterModule
+import com.slyrand.mvvmapp.user.di.userModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,7 +22,7 @@ class MvvmApp : Application() {
                     networkModule,
                     datasourceModule,
                     repositoryModule,
-                    characterModule
+                    userModule
                 )
             )
         }

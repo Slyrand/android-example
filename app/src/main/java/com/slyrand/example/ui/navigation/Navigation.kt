@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import coil.annotation.ExperimentalCoilApi
-import com.slyrand.example.ui.character.list.CharacterListScreen
+import com.slyrand.example.ui.user.list.UserListScreen
 
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
@@ -18,21 +18,21 @@ fun Navigation(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Feature.CharacterList.route
+        startDestination = Feature.UserList.route
     ) {
-        //characterListNav(navController = navController)
+        //userListNav(navController = navController)
     }
 }
 
 @ExperimentalCoilApi
 @ExperimentalFoundationApi
-private fun NavGraphBuilder.characterListNav(navController: NavHostController) {
+private fun NavGraphBuilder.userListNav(navController: NavHostController) {
     navigation(
-        startDestination = NavCommand.ContentType(Feature.CharacterList).route,
-        route = Feature.CharacterList.route
+        startDestination = NavCommand.ContentType(Feature.UserList).route,
+        route = Feature.UserList.route
     ) {
-        composable(NavCommand.ContentType(Feature.CharacterList)) {
-            CharacterListScreen(onClick = {})
+        composable(NavCommand.ContentType(Feature.UserList)) {
+            UserListScreen(onClick = {})
         }
     }
 }

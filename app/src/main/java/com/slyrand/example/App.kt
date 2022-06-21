@@ -4,7 +4,7 @@ import android.app.Application
 import com.slyrand.data.di.datasourceModule
 import com.slyrand.data.di.networkModule
 import com.slyrand.data.di.repositoryModule
-import com.slyrand.example.di.characterModule
+import com.slyrand.example.di.userModule
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.android.ext.koin.androidContext
@@ -23,7 +23,7 @@ class App: Application() {
                     networkModule,
                     datasourceModule,
                     repositoryModule,
-                    characterModule
+                    userModule
                 )
             )
         }
