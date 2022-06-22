@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.slyrand.mvvmapp.R
 import com.slyrand.mvvmapp.databinding.FragmentUserListBinding
@@ -20,7 +19,7 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
 
     private lateinit var _binding: FragmentUserListBinding
     private lateinit var _adapter: UserAdapter
-    private lateinit var _navigator : Navigator
+    private lateinit var _navigator: Navigator
     private val _viewModel: UsersListViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,9 +32,17 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
             usersList.adapter = _adapter
             usersList.layoutManager = LinearLayoutManager(requireContext())
 
+            pullToRefresh.setOnRefreshListener {
+                pullToRefresh.isRefreshing = false
+                _viewModel.refresh()
+            }
+
             viewLifecycleOwner.lifecycleScope.launch {
                 viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                     _viewModel.state.collect { state ->
+                        emptyContentView.visibility = if (state.error != null) View.VISIBLE
+                        else View.GONE
+
                         progress.visibility = if (state.loading) View.VISIBLE else View.GONE
                         _adapter.users = state.users
                     }

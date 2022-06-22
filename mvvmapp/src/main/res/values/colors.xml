@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="marvelRed">#E62529</color>
     <color name="almostBlack">#151515</color>
+    <color name="darkGray">#4E4E4E</color>
 </resources>

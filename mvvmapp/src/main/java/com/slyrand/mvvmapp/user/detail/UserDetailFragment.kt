@@ -3,21 +3,18 @@ package com.slyrand.mvvmapp.user.detail
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import com.slyrand.mvvmapp.R
-import com.slyrand.mvvmapp.core.extensions.loadImage
+import com.slyrand.mvvmapp.core.extensions.loadThumbnail
 import com.slyrand.mvvmapp.databinding.FragmentUserDetailBinding
-import com.slyrand.mvvmapp.navigation.Navigator
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.androidx.navigation.koinNavGraphViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import java.text.SimpleDateFormat
+import java.util.*
 
 class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
 
@@ -34,9 +31,19 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
                 viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                     _viewModel.state.collect { state ->
 
-                        state.user?.let {
-                            userThumbnail.loadImage(state.user.picture)
-                            userName.text = it.firstName
+                        state.user?.let { user ->
+                            userThumbnail.loadThumbnail(state.user.picture)
+                            userName.text = user.firstName
+                            userEmail.setText(user.email)
+                            userPhone.setText(user.phone)
+
+                            val dateFormatter = SimpleDateFormat(
+                                "dd / MM / yyyy",
+                                Locale.getDefault()
+                            )
+                            user.dateOfBirth?.let {
+                                userBirthDate.setText(dateFormatter.format(it))
+                            }
                         }
                     }
                 }

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.slyrand.domain.user.model.User
-import com.slyrand.mvvmapp.core.extensions.loadImage
+import com.slyrand.mvvmapp.core.extensions.loadThumbnail
 import com.slyrand.mvvmapp.databinding.ItemUserBinding
 import kotlin.properties.Delegates
 
@@ -49,7 +49,7 @@ class UserAdapter(
         fun bind(user: User) {
             with(binding) {
                 userName.text = user.firstName
-                userThumbnail.loadImage(user.picture)
+                userThumbnail.loadThumbnail(user.picture)
                 root.setOnClickListener { onUserClick(user) }
             }
         }

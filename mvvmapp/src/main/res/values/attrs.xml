@@ -6,4 +6,10 @@
         <attr name="optionText" format="string"/>
         <attr name="optionTextColor" format="reference"/>
     </declare-styleable>
+
+
+    <declare-styleable name="EmptyContentView">
+        <attr name="emptyContentTitle" format="string"/>
+        <attr name="emptyContentSubtitle" format="string"/>
+    </declare-styleable>
 </resources>
