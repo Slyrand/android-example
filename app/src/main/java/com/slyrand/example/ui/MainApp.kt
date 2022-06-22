@@ -7,9 +7,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import coil.annotation.ExperimentalCoilApi
 import com.slyrand.example.ui.navigation.Navigation
 import com.slyrand.example.ui.theme.ExampleTheme
 
+@ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable
 fun MainApp(appState: AppState = rememberAppState()) {
