@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="example.app" target="11" />
+      <module name="example.appcompose" target="11" />
+      <module name="example.appmvvm" target="11" />
       <module name="example.data" target="11" />
-      <module name="example.mvvmapp" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "example"
-include ':app'
+include ':appcompose'
 include ':data'
 include ':domain'
-include ':mvvmapp'
+include ':appmvvm'
