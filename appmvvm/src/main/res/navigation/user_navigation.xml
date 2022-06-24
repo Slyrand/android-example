@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/user_list"
         android:name="com.slyrand.mvvmapp.user.list.UserListFragment"
-        android:label="user_list"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_user_list">
         <action
             android:id="@+id/action_user_list_to_user_detail"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/user_detail"
         android:name="com.slyrand.mvvmapp.user.detail.UserDetailFragment"
-        android:label="user_detail"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_user_detail">
         <argument
             android:name="user_id"

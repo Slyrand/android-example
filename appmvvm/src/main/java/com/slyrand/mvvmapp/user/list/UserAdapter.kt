@@ -48,7 +48,7 @@ class UserAdapter(
 
         fun bind(user: User) {
             with(binding) {
-                userName.text = user.firstName
+                userName.text = "${user.firstName} ${user.lastName}"
                 userThumbnail.loadThumbnail(user.picture)
                 root.setOnClickListener { onUserClick(user) }
             }

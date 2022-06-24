@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.slyrand.mvvmapp.R
 import com.slyrand.mvvmapp.core.extensions.loadThumbnail
 import com.slyrand.mvvmapp.databinding.FragmentUserDetailBinding
@@ -27,13 +29,14 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentUserDetailBinding.bind(view).apply {
+            toolBar.setNavigationOnClickListener { findNavController().navigateUp() }
             viewLifecycleOwner.lifecycleScope.launch {
                 viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                     _viewModel.state.collect { state ->
 
                         state.user?.let { user ->
                             userThumbnail.loadThumbnail(state.user.picture)
-                            userName.text = user.firstName
+                            userName.text = "${user.firstName} ${user.lastName}"
                             userEmail.setText(user.email)
                             userPhone.setText(user.phone)
 

@@ -7,9 +7,10 @@
         <entry key="appmvvm/src/main/res/drawable/ic_cake.xml" value="0.303" />
         <entry key="appmvvm/src/main/res/drawable/ic_cellphone.xml" value="0.303" />
         <entry key="appmvvm/src/main/res/drawable/ic_search.xml" value="0.2815" />
+        <entry key="appmvvm/src/main/res/layout-land/fragment_user_detail.xml" value="0.390625" />
         <entry key="appmvvm/src/main/res/layout/activity_main.xml" value="0.2994791666666667" />
-        <entry key="appmvvm/src/main/res/layout/fragment_user_detail.xml" value="0.6015625" />
-        <entry key="appmvvm/src/main/res/layout/fragment_user_list.xml" value="0.6015625" />
+        <entry key="appmvvm/src/main/res/layout/fragment_user_detail.xml" value="0.2203125" />
+        <entry key="appmvvm/src/main/res/layout/fragment_user_list.xml" value="0.2680145263671875" />
         <entry key="appmvvm/src/main/res/layout/item_user.xml" value="0.6015625" />
         <entry key="appmvvm/src/main/res/layout/item_user_attr.xml" value="0.6015625" />
         <entry key="appmvvm/src/main/res/layout/view_empty_content.xml" value="0.6015625" />
