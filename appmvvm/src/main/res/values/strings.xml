@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MVVM App</string>
+
+    <string name="search">Search</string>
+    <string name="connection_error_title">Connection error</string>
+    <string name="connection_error_subtitle">Looks like you are not connected to the internet. Please check your internet connection and try again.</string>
+    <string name="no_results_error_title">No results founds</string>
+    <string name="no_results_error_subtitle">Looks like there are no results for %1$s</string>
+    <string name="generic_error_title">Error</string>
+    <string name="generic_error_subtitle">Oops… something went wrong</string>
 </resources>

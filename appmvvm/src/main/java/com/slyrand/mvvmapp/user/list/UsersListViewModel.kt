@@ -6,6 +6,7 @@ import com.slyrand.domain.user.IUserRepository
 import com.slyrand.domain.core.model.DataError
 import com.slyrand.domain.core.model.PaginationState
 import com.slyrand.domain.user.model.User
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

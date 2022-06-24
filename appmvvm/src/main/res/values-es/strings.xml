@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MVVM App</string>
+
+    <string name="search">Buscar</string>
+    <string name="connection_error_title">Error de conexión</string>
+    <string name="connection_error_subtitle">Parece que no tienes conexión a internet. Por favor comprueba tu conexión e intentalo de nuevo</string>
+    <string name="no_results_error_title">No se han encontrado resultados</string>
+    <string name="no_results_error_subtitle">Parece que no hay resultados para %1$s</string>
+    <string name="generic_error_title">Error</string>
+    <string name="generic_error_subtitle">Ups… parece que algo ha ido mal</string>
+</resources>

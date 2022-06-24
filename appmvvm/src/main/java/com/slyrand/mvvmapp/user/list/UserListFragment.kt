@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.slyrand.domain.core.model.DataError
 import com.slyrand.mvvmapp.R
 import com.slyrand.mvvmapp.databinding.FragmentUserListBinding
 import com.slyrand.mvvmapp.navigation.Navigator
@@ -39,13 +40,43 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    _viewModel.state.collect { state ->
-                        emptyContentView.visibility = if (state.error != null) View.VISIBLE
-                        else View.GONE
+                    _viewModel.state.collect { state -> updateUi(state) }
+                }
+            }
+        }
+    }
 
-                        progress.visibility = if (state.loading) View.VISIBLE else View.GONE
-                        _adapter.users = state.users
-                    }
+    private fun updateUi(state: UsersListViewModel.UiState) {
+        with(_binding) {
+            if (state.error == null) emptyContentView.visibility = View.GONE
+            else {
+                emptyContentView.visibility = View.VISIBLE
+                updateError(state.error)
+            }
+
+            progress.visibility = if (state.loading) View.VISIBLE else View.GONE
+            _adapter.users = state.users
+        }
+    }
+
+    private fun updateError(error: DataError) {
+        with(_binding) {
+            when (error) {
+                is DataError.ConnectionError -> {
+                    emptyContentView.setTitle(getString(R.string.connection_error_title))
+                    emptyContentView.setSubtitle(getString(R.string.connection_error_subtitle))
+                }
+                is DataError.NoResultsFoundFor -> {
+                    emptyContentView.setTitle(getString(R.string.no_results_error_title))
+                    emptyContentView.setSubtitle(
+                        String.format(
+                            getString(R.string.connection_error_subtitle),
+                            error.query)
+                    )
+                }
+                else -> {
+                    emptyContentView.setTitle(getString(R.string.generic_error_title))
+                    emptyContentView.setSubtitle(getString(R.string.generic_error_subtitle))
                 }
             }
         }

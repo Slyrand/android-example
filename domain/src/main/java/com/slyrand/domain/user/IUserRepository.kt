@@ -7,4 +7,5 @@ import com.slyrand.domain.core.model.PaginationState
 interface IUserRepository {
     suspend fun getUsers(paginationState: PaginationState): DataResult<List<User>>
     suspend fun getUserDetail(userId: String): DataResult<User>
+    fun queryUsers(query: String): DataResult<List<User>>
 }

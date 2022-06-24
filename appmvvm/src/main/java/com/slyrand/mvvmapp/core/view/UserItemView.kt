@@ -1,4 +1,4 @@
-package com.slyrand.jobandtalent.core.view
+package com.slyrand.mvvmapp.core.view
 
 import android.content.Context
 import android.util.AttributeSet

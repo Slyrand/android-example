@@ -4,6 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/compose-model-1654671627260.xml" value="0.5" />
+        <entry key="appmvvm/src/main/res/drawable/ic_cake.xml" value="0.303" />
+        <entry key="appmvvm/src/main/res/drawable/ic_cellphone.xml" value="0.303" />
+        <entry key="appmvvm/src/main/res/drawable/ic_search.xml" value="0.2815" />
+        <entry key="appmvvm/src/main/res/layout/activity_main.xml" value="0.2994791666666667" />
+        <entry key="appmvvm/src/main/res/layout/fragment_user_detail.xml" value="0.6015625" />
+        <entry key="appmvvm/src/main/res/layout/fragment_user_list.xml" value="0.6015625" />
+        <entry key="appmvvm/src/main/res/layout/item_user.xml" value="0.6015625" />
+        <entry key="appmvvm/src/main/res/layout/item_user_attr.xml" value="0.6015625" />
+        <entry key="appmvvm/src/main/res/layout/view_empty_content.xml" value="0.6015625" />
         <entry key="mvvmapp/src/main/res/drawable/bg_cutted_corner.xml" value="0.304" />
         <entry key="mvvmapp/src/main/res/drawable/ic_cake.xml" value="0.1045" />
         <entry key="mvvmapp/src/main/res/drawable/ic_cellphone.xml" value="0.1045" />

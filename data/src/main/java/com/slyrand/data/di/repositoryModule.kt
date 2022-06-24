@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 val repositoryModule: Module = module {
     single<IUserRepository> {
-        UserRepository(networkDatasource = get())
+        UserRepository(localDatasource = get(), networkDatasource = get())
     }
 }
