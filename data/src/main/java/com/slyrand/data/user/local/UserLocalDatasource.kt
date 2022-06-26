@@ -9,15 +9,18 @@ import com.slyrand.domain.user.model.User
 
 class UserLocalDatasource : UserRepository.ILocalDatasource {
 
-    private val _users: MutableSet<User> = mutableSetOf()
+    private var _users: MutableSet<User> = mutableSetOf()
 
     override fun addUsers(users: List<User>) {
-        _users.addAll(users)
+        val usersIds = _users.map { it.id }
+        val nonAddedUsers = users
+            .filterNot { usersIds.contains(it.id) }
+        _users.addAll(nonAddedUsers)
     }
 
     override fun queryUsers(query: String): DataResult<List<User>> {
         val filteredUsers = _users.filter {
-            val userInfo = "${it.firstName}, ${it.lastName}, ${it.title}, ${it.email}"
+            val userInfo = "${it.firstName}, ${it.lastName}, ${it.title}, ${it.email}".lowercase()
             userInfo.contains(query)
         }
 

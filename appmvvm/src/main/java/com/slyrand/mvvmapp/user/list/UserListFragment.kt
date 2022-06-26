@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.slyrand.domain.core.model.DataError
 import com.slyrand.mvvmapp.R
+import com.slyrand.mvvmapp.core.EndlessScrollListener
+import com.slyrand.mvvmapp.core.extensions.setOnQueryChangedListener
 import com.slyrand.mvvmapp.databinding.FragmentUserListBinding
 import com.slyrand.mvvmapp.navigation.Navigator
 import kotlinx.coroutines.flow.collect
@@ -21,6 +23,7 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
     private lateinit var _binding: FragmentUserListBinding
     private lateinit var _adapter: UserAdapter
     private lateinit var _navigator: Navigator
+    private val _endlessScrollListener = EndlessScrollListener { _viewModel.loadMore() }
     private val _viewModel: UsersListViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,10 +31,12 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
 
         _navigator = Navigator(findNavController())
         _binding = FragmentUserListBinding.bind(view).apply {
+            searchView.setOnQueryChangedListener { _viewModel.onQueryChanged(it) }
 
             _adapter = UserAdapter { _navigator.navigateToUserDetail(it.id) }
             usersList.adapter = _adapter
             usersList.layoutManager = LinearLayoutManager(requireContext())
+            usersList.addOnScrollListener(_endlessScrollListener)
 
             pullToRefresh.setOnRefreshListener {
                 pullToRefresh.isRefreshing = false
@@ -70,7 +75,7 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
                     emptyContentView.setTitle(getString(R.string.no_results_error_title))
                     emptyContentView.setSubtitle(
                         String.format(
-                            getString(R.string.connection_error_subtitle),
+                            getString(R.string.no_results_error_subtitle),
                             error.query)
                     )
                 }

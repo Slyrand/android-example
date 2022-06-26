@@ -14,7 +14,6 @@ data class User(
     val phone: String,
     val picture: String
 ) {
-
     sealed interface Gender {
         companion object {
             private const val MALE = "male"

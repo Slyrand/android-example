@@ -1,8 +1,8 @@
 package com.slyrand.domain.core.model
 
 data class PaginationState(
-    val page: Int = 1,
+    val page: Int = 0,
     val limit: Int = 20,
 ) {
-    fun setNextPage(): PaginationState = copy(page = page + 1)
+    fun nextPage(): PaginationState = copy(page = page + 1)
 }
