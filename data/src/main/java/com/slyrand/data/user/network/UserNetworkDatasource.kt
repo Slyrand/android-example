@@ -1,10 +1,11 @@
 package com.slyrand.data.user.network
 
-import com.slyrand.data.user.UserRepository
 import com.slyrand.data.core.network.handleCall
-import com.slyrand.domain.user.model.User
+import com.slyrand.data.user.UserRepository
+import com.slyrand.data.user.network.model.asUser
 import com.slyrand.domain.core.DataResult
 import com.slyrand.domain.core.model.PaginationState
+import com.slyrand.domain.user.model.User
 
 class UserNetworkDatasource(
     private val userService: UserService

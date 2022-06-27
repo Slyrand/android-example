@@ -34,7 +34,7 @@ class UsersListViewModel(
         if (_state.value.query.isEmpty()) requestData()
     }
 
-    private fun requestData() {
+    fun requestData() {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true, error = null)
             getUsers.execute(_state.value.paginationState, _state.value.query).fold(
@@ -55,9 +55,7 @@ class UsersListViewModel(
         _state.value = _state.value.copy(
             users = listOf(),
             paginationState = PaginationState(),
-            query = query,
-            loading = true,
-            error = null
+            query = query
         )
         requestData()
     }

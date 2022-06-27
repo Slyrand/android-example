@@ -48,6 +48,17 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation "com.google.code.gson:gson:$gson_version"
+
+    // TESTS
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "io.kotlintest:kotlintest:$kotlin_test_version"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
+
+    // KOTLIN
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
 }
 
 kapt {
